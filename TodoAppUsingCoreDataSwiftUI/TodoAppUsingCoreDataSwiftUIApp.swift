@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct TodoAppUsingCoreDataSwiftUIApp: App {
+    
+    let provider = CoreDataProvider()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack {
+                ContentView()
+                    .environment(\.managedObjectContext, provider.viewContext)
+            }
         }
     }
 }
